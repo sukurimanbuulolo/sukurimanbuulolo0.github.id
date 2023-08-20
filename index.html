@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <style>
+        #map {
+            width: 1072px;
+            height: 571px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/PETAINSTIPER_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-7.762319286827501,110.42155932981271],[-7.7586216384769235,110.4285770014814]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_2gisMap_0');
+        map.getPane('pane_2gisMap_0').style.zIndex = 400;
+        var layer_2gisMap_0 = L.tileLayer('https://tile2.maps.2gis.com/tiles?x={x}&y={y}&z={z}&v=1.1', {
+            pane: 'pane_2gisMap_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_2gisMap_0;
+        map.addLayer(layer_2gisMap_0);
+        map.createPane('pane_GoogleHybrid_1');
+        map.getPane('pane_GoogleHybrid_1').style.zIndex = 401;
+        var layer_GoogleHybrid_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleHybrid_1',
+            opacity: 1.0,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_GoogleHybrid_1;
+        map.addLayer(layer_GoogleHybrid_1);
+        function pop_PETAINSTIPER_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INSTIPER'] !== null ? autolinker.link(feature.properties['INSTIPER'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PETAINSTIPER_2_0(feature) {
+            switch(String(feature.properties['INSTIPER'])) {
+                default:
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(53,109,200,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'ATM BPD KAS INSTIPER':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,128,185,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'BIRO KEUANGGAN':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(87,191,217,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'FAKULTAS KEHUTANAN':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,68,190,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'FAKULTAS PERTANIAN':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(66,144,24,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'FAKULTAS TEKNOLOGI PERTANIAN':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,106,191,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'GRHA ISNTIPER':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(133,104,63,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'KAMPUS INSTIPER':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(24,120,237,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'LAPANGAN BASKET INSTIPER':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,94,177,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'LAPANGAN OLAH RAGA INSTIPER':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(154,187,102,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MAKO MENWA':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(136,65,61,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'MESJID INSTIPER':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(9,148,109,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PARKIRAN':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(241,97,186,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PERPUSTAKAAN':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(53,126,148,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PILOT PLANT':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(103,254,28,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'PUSAT SENTRAL':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(78,198,51,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'STUDENT CENTER':
+                    return {
+                pane: 'pane_PETAINSTIPER_2',
+                opacity: 1,
+                color: 'rgba(236,199,134,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 4.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(53,254,56,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_PETAINSTIPER_2');
+        map.getPane('pane_PETAINSTIPER_2').style.zIndex = 402;
+        map.getPane('pane_PETAINSTIPER_2').style['mix-blend-mode'] = 'normal';
+        var layer_PETAINSTIPER_2 = new L.geoJson(json_PETAINSTIPER_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_PETAINSTIPER_2',
+            layerName: 'layer_PETAINSTIPER_2',
+            pane: 'pane_PETAINSTIPER_2',
+            onEachFeature: pop_PETAINSTIPER_2,
+            style: style_PETAINSTIPER_2_0,
+        });
+        bounds_group.addLayer(layer_PETAINSTIPER_2);
+        map.addLayer(layer_PETAINSTIPER_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'PETA INSTIPER<br /><table><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_0.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_ATMBPDKASINSTIPER1.png" /></td><td>ATM BPD KAS INSTIPER</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_BIROKEUANGGAN2.png" /></td><td>BIRO KEUANGGAN</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_FAKULTASKEHUTANAN3.png" /></td><td>FAKULTAS KEHUTANAN</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_FAKULTASPERTANIAN4.png" /></td><td>FAKULTAS PERTANIAN</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_FAKULTASTEKNOLOGIPERTANIAN5.png" /></td><td>FAKULTAS TEKNOLOGI PERTANIAN</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_GRHAISNTIPER6.png" /></td><td>GRHA ISNTIPER</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_KAMPUSINSTIPER7.png" /></td><td>KAMPUS INSTIPER</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_LAPANGANBASKETINSTIPER8.png" /></td><td>LAPANGAN BASKET INSTIPER</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_LAPANGANOLAHRAGAINSTIPER9.png" /></td><td>LAPANGAN OLAH RAGA INSTIPER</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_MAKOMENWA10.png" /></td><td>MAKO MENWA</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_MESJIDINSTIPER11.png" /></td><td>MESJID INSTIPER</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_PARKIRAN12.png" /></td><td>PARKIRAN</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_PERPUSTAKAAN13.png" /></td><td>PERPUSTAKAAN</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_PILOTPLANT14.png" /></td><td>PILOT PLANT</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_PUSATSENTRAL15.png" /></td><td>PUSAT SENTRAL</td></tr><tr><td style="text-align: center;"><img src="legend/PETAINSTIPER_2_STUDENTCENTER16.png" /></td><td>STUDENT CENTER</td></tr></table>': layer_PETAINSTIPER_2,"Google Hybrid": layer_GoogleHybrid_1,"2gis Map": layer_2gisMap_0,}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_PETAINSTIPER_2.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['INSTIPER'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['INSTIPER']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_PETAINSTIPER_2'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        map.addControl(new L.Control.Search({
+            layer: layer_PETAINSTIPER_2,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'id'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        resetLabels([layer_PETAINSTIPER_2]);
+        map.on("zoomend", function(){
+            resetLabels([layer_PETAINSTIPER_2]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_PETAINSTIPER_2]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_PETAINSTIPER_2]);
+        });
+        </script>
+    </body>
+</html>
